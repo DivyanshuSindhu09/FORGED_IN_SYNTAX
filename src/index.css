@@ -162,7 +162,7 @@ main {
 }
 
 .mask-wrapper {
-  mask-image: url("/public/Group\ 2.svg");
+  mask-image: url("../public/Group\ 2.svg");
   mask-repeat: no-repeat;
 }
 
@@ -412,7 +412,7 @@ body {
 }
 
 .first-mask{
-  background-image: url(./new_img.jpeg);
+  background-image: url(../public/new_img.jpeg);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;

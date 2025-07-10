@@ -63,7 +63,7 @@ const App = () => {
       <Toaster position="top-right" />
       <Loader />
       <First />
-      <About />
+      {/* <About /> */}
       <Features />
       <Members />
       <Projects />
