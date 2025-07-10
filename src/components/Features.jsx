@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import Card from "../components/Card";
 import RegisterModal from "../components/RegisterModal";
-import { Frameworks } from "../components/FrameWorks";
+import { Frameworks } from "./FrameWorks";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/all";
 import gsap from "gsap";
