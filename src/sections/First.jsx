@@ -3,28 +3,22 @@ import { useGSAP } from "@gsap/react";
 import Second from "./Second"
 import { useEffect, useState } from "react";
 
+
 const Hero = () => {
   const bigImage = '/4dfe5a19-bfa9-4a9a-907c-5644ede63f26.png'
   const smallImage = '/75928066-8dff-490d-a5ef-78318a9ffc23.jpeg'
-  const [photoSrc, setPhotoSrc] = useState(() => {
-  if (typeof window !== "undefined") {
-    return window.innerWidth < 760
-      ? '/75928066-8dff-490d-a5ef-78318a9ffc23.jpeg'
-      : '/4dfe5a19-bfa9-4a9a-907c-5644ede63f26.png';
-  }
-  return '/4dfe5a19-bfa9-4a9a-907c-5644ede63f26.png';
-});
+  const [photoSrc, setPhotoSrc] = useState(window.innerWidth < 760 ? smallImage : bigImage);
   const handleImageSrc = ()=>{
     if(window.innerWidth < 760){
-      setPhotoSrc('/4dfe5a19-bfa9-4a9a-907c-5644ede63f26.png')
+      setPhotoSrc(bigImage)
     }else{
-      setPhotoSrc('/75928066-8dff-490d-a5ef-78318a9ffc23.jpeg')
+      setPhotoSrc(smallImage)
     }
   }
 
   useEffect(()=>{
     window.addEventListener('resize', handleImageSrc)
-
+    console.log(photoSrc)
     return ()=>{
       window.removeEventListener('resize', handleImageSrc)
     }
@@ -68,11 +62,15 @@ const Hero = () => {
     <section className="hero-section">
       
       <div 
-      style={{
-        backgroundImage : `url(${photoSrc})`
-      }}
-      className="w-full h-screen  first-mask  mask-wrapper">
+      // style={{
+      //   backgroundImage : `url(${photoSrc})`
+      // }}
+      className = {`w-full h-screen  mask-wrapper   `}
       
+      >
+      <img
+      className="w-full h-full object-center object-contain"
+      src={photoSrc} alt="" />
       </div>
 
       
