@@ -12,9 +12,9 @@ const Hero = () => {
 );
   const handleImageSrc = () => {
   if (window.innerWidth < 760) {
-    setPhotoSrc(smallImage); // ✅ Correct for mobile
+    setPhotoSrc(smallImage); 
   } else {
-    setPhotoSrc(bigImage); // ✅ Correct for desktop
+    setPhotoSrc(bigImage); 
   }
 };
 
