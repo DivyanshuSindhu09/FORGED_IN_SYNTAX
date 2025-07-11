@@ -1,4 +1,5 @@
-import { motion } from "motion/react";
+import { motion } from "framer-motion"; 
+
 const Card = ({ style, text, image, containerRef }) => {
   return image && !text ? (
     <motion.img
@@ -16,7 +17,6 @@ const Card = ({ style, text, image, containerRef }) => {
       style={style}
       whileHover={{ scale: 1.05 }}
       drag
-      ref={containerRef}
       dragConstraints={containerRef}
       dragElastic={1}
     >

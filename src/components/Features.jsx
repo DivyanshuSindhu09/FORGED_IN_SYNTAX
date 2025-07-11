@@ -62,7 +62,7 @@ const Features = () => {
   
         <div className="grid-default-color grid-2 min-h-[18rem]">
           <div ref={grid2Container} className="flex items-center justify-center w-full h-full relative">
-            <p className="absolute top-4 left-1/2 -translate-x-1/2 text-center text-xl font-[absans] text-gray-500">
+            <p className="absolute top-4 left-1/2 -translate-x-1/2 text-center text-4xl font-[absans] font-semibold text-gray-700">
               Focus Areas
             </p>
             <Card
