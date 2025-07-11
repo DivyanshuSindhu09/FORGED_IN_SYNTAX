@@ -7,14 +7,16 @@ import { useEffect, useState } from "react";
 const Hero = () => {
   const bigImage = '/4dfe5a19-bfa9-4a9a-907c-5644ede63f26.png'
   const smallImage = '/75928066-8dff-490d-a5ef-78318a9ffc23.jpeg'
-  const [photoSrc, setPhotoSrc] = useState(window.innerWidth < 760 ? smallImage : bigImage);
-  const handleImageSrc = ()=>{
-    if(window.innerWidth < 760){
-      setPhotoSrc(bigImage)
-    }else{
-      setPhotoSrc(smallImage)
-    }
+  const [photoSrc, setPhotoSrc] = useState(
+  window.innerWidth < 760 ? smallImage : bigImage
+);
+  const handleImageSrc = () => {
+  if (window.innerWidth < 760) {
+    setPhotoSrc(smallImage); // ✅ Correct for mobile
+  } else {
+    setPhotoSrc(bigImage); // ✅ Correct for desktop
   }
+};
 
   useEffect(()=>{
     window.addEventListener('resize', handleImageSrc)
@@ -70,7 +72,7 @@ const Hero = () => {
       >
       <img
       className="w-full h-full object-center object-contain"
-      src={photoSrc} alt="" />
+      src={photoSrc}  />
       </div>
 
       
