@@ -42,8 +42,8 @@ export const myProjects = [
     description:
       "A STANDARD PORTFOLIO",
     subDescription: [
-      'RESURRECTION is a cutting-edge project that aims to revolutionize the blood donation process. This project attempts to streamline blood donation by providing real-time donation requests, monitoring contribution histories, and an interactive map to help donors find nearby hospitals.'
-    ],
+      "A visually immersive and interactive portfolio website crafted to reflect a creative developer's identity. Built entirely using HTML, CSS, JavaScript, enhanced with GSAP animations, Spline 3D objects, SVG elements, and smooth scrolling for a premium user experience. This portfolio is not just a resume—it’s a canvas of code and creativity."
+],
     href: "https://divyanshu-sindhu.forgedinsyntax.club/",
     logo: "",
     image: "/assets/devansh_port.JPG",

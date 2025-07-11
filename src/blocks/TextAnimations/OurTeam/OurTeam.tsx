@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-interface TrueFocusProps {
+interface OurTeamProps {
   sentence?: string;
   manualMode?: boolean;
   blurAmount?: number;
@@ -19,7 +19,7 @@ interface FocusRect {
   height: number;
 }
 
-const TrueFocus: React.FC<TrueFocusProps> = ({
+const OurTeam: React.FC<OurTeamProps> = ({
   sentence = "Our  Team",
   manualMode = false,
   blurAmount = 5,
@@ -165,4 +165,4 @@ const TrueFocus: React.FC<TrueFocusProps> = ({
   );
 };
 
-export default TrueFocus;
+export default OurTeam;

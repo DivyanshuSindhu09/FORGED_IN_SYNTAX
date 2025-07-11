@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-const Lightning = ({
+const Background = ({
   hue = 294,
   xOffset = 0,
   speed = 1,
@@ -210,4 +210,4 @@ const Lightning = ({
   );
 };
 
-export default Lightning;
+export default Background;

@@ -1,7 +1,7 @@
 import { useGSAP } from "@gsap/react";
-import Lightning from "../blocks/Backgrounds/Lightning/Lightning";
 import gsap from "gsap";
 import { useEffect, useState } from "react";
+import Background from "../blocks/Backgrounds/Background/Background";
 
 const About = () => {
   const [xOffset, setXoffset] = useState(0);
@@ -70,7 +70,7 @@ const About = () => {
     <section className="w-full h-screen relative fading">
     
       <div id="light" className="absolute inset-0 z-10 bg-transparent">
-        <Lightning xOffset={xOffset} />
+        <Background xOffset={xOffset} />
       </div>
 
     
