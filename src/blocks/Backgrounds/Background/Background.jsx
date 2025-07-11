@@ -140,7 +140,7 @@ const Background = ({
       return;
     }
 
-    gl.useProgram(program); // Activate program BEFORE fetching uniforms
+    gl.useProgram(program); 
 
 
     const vertices = new Float32Array([
