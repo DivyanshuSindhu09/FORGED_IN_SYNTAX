@@ -412,8 +412,10 @@ body {
 }
 
 .first-mask{
-  background-image: url(../public/new_img.jpeg);
+  background-image: url(../public/4dfe5a19-bfa9-4a9a-907c-5644ede63f26.png);
   background-position: center;
   background-size: contain;
+  /* position: fixed; */
+  /* z-index: 99; */
   background-repeat: no-repeat;
 }

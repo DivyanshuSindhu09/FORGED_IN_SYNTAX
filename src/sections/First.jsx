@@ -7,8 +7,8 @@ const Hero = () => {
 
   useGSAP(() => {
     gsap.set('.mask-wrapper', {
-      maskPosition: "42% 45%",
-      maskSize: "8000% 10000%",
+      maskPosition: "42% 41%",
+      maskSize: "11000% 11000%",
     });
 
     // gsap.set('.mask-logo', { marginTop: '-100vh', opacity: 0 });
@@ -19,8 +19,8 @@ const Hero = () => {
       scrollTrigger: {
         trigger: '.hero-section',
         start: 'top top',
-        scrub: 1.5,
-        end: '+=400%',
+        scrub: 2,
+        end: '+=450%',
         pin: true,
       }
     })
@@ -29,6 +29,7 @@ const Hero = () => {
       // .to('.fade-out', { opacity: 0, ease: 'power1.inOut' })
       // .to('.scale-out', { scale: 1, ease: 'power1.inOut' })
       .to('.mask-wrapper', { 
+        duration : 5,
         maskPosition : "50% 50%",
         maskSize : "40% 40%", ease: 'power1.inOut' }, '<')
       .to('.mask-wrapper', { opacity: 0 })

@@ -54,10 +54,10 @@ const About = () => {
       // });
   }, []);
 
-  const hoizontalHandler = () => {
-    const xAxis = ((Math.random() * 4) - 2).toFixed(1);
-    setXoffset(xAxis);
-  };
+  // const hoizontalHandler = () => {
+  //   const xAxis = ((Math.random() * 4) - 2).toFixed(1);
+  //   setXoffset(xAxis);
+  // };
 
   useEffect(() => {
     const interval = setInterval(() => {
