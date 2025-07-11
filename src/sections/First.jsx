@@ -1,9 +1,27 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Second from "./Second"
+import { useEffect, useState } from "react";
 
 const Hero = () => {
- 
+  const bigImage = '../public/4dfe5a19-bfa9-4a9a-907c-5644ede63f26.png'
+  const smallImage = '../public/75928066-8dff-490d-a5ef-78318a9ffc23.jpeg'
+  const [photoSrc, setPhotoSrc] = useState(window.innerWidth < 760 ? smallImage : bigImage)
+  const handleImageSrc = ()=>{
+    if(window.innerWidth < 760){
+      setPhotoSrc('../public/4dfe5a19-bfa9-4a9a-907c-5644ede63f26.png')
+    }else{
+      setPhotoSrc('../public/75928066-8dff-490d-a5ef-78318a9ffc23.jpeg')
+    }
+  }
+
+  useEffect(()=>{
+    window.addEventListener('resize', handleImageSrc)
+
+    return ()=>{
+      window.removeEventListener('resize', handleImageSrc)
+    }
+  },[])
 
   useGSAP(() => {
     gsap.set('.mask-wrapper', {
@@ -42,8 +60,12 @@ const Hero = () => {
   return (
     <section className="hero-section">
       
-      <div className="w-full h-screen  first-mask  mask-wrapper">
-
+      <div 
+      style={{
+        backgroundImage : `url(${photoSrc})`
+      }}
+      className="w-full h-screen  first-mask  mask-wrapper">
+      
       </div>
 
       

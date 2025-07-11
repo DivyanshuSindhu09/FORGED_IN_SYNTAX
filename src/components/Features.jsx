@@ -126,11 +126,11 @@ const Features = () => {
             <p className="headtext font-[acma-semi] text-lg sm:text-xl">
               Developer Network
             </p>
-            <p className="subtext font-[absans] text-sm sm:text-base">
+            <p className="subtext font-[absans] relative z-11 text-sm sm:text-base">
               Connect with like-minded developers, share knowledge, and build lasting professional relationships in the tech community.
             </p>
           </div>
-          <div className="absolute inset-y-0 md:inset-y-9 w-full h-full start-[50%] md:scale-125">
+          <div className="absolute inset-y-0 md:inset-y-9 w-full  h-full start-[50%] md:scale-125">
             <Frameworks />
           </div>
         </div>
