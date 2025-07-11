@@ -9,26 +9,29 @@ import gsap from "gsap";
 const Features = () => {
   const [showRegister, setShowRegister] = useState(false)
   useGSAP(() => {
-    const split = new SplitText(".reasons", { type: "chars" });
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".reasons",
-      },
-    });
+    document.fonts.ready.then(() => {
+      const split = new SplitText(".reasons", { type: "chars" });
 
-    tl.from(split.chars, {
-      y: 100,
-      rotationX: 90,
-      opacity: 0,
-      color: "#ffffff",
-      stagger: 0.03,
-      duration: 1,
-      transformOrigin: "center top",
-      perspective: 700,
-    }).to(split.chars, {
-      duration: 1,
-      stagger: 0.04,
-      ease: "power2.inOut",
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".reasons",
+        },
+      });
+
+      tl.from(split.chars, {
+        y: 100,
+        rotationX: 90,
+        opacity: 0,
+        color: "#ffffff",
+        stagger: 0.03,
+        duration: 1,
+        transformOrigin: "center top",
+        perspective: 700,
+      }).to(split.chars, {
+        duration: 1,
+        stagger: 0.04,
+        ease: "power2.inOut",
+      });
     });
   }, []);
 

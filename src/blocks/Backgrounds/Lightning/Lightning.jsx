@@ -13,7 +13,6 @@ const Lightning = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    // Lower resolution scaling factor
     const resolutionScale = 0.5;
 
     const resizeCanvas = () => {
@@ -28,6 +27,7 @@ const Lightning = ({
       console.error("WebGL not supported");
       return;
     }
+
 
     const vertexShaderSource = `
       attribute vec2 aPosition;
@@ -89,29 +89,23 @@ const Lightning = ({
       }
 
       void mainImage(out vec4 fragColor, in vec2 fragCoord) {
-    vec2 uv = fragCoord / iResolution.xy;
-    uv = 2.0 * uv - 1.0;
-    uv.x *= iResolution.x / iResolution.y;
-    uv.x += uXOffset;
+          vec2 uv = fragCoord / iResolution.xy;
+          uv = 2.0 * uv - 1.0;
+          uv.x *= iResolution.x / iResolution.y;
+          uv.x += uXOffset;
 
-    // Subtle movement from FBM + time
-    float noiseOffset = fbm(uv * uSize + iTime * uSpeed);
-    uv += 1.5 * (noiseOffset - 0.5);
+          float noiseOffset = fbm(uv * uSize + iTime * uSpeed);
+          uv += 1.5 * (noiseOffset - 0.5);
 
-    float dist = abs(uv.x);
+          float dist = abs(uv.x);
+          float animatedHue = mod(uHue + sin(iTime * 0.5) * 20.0, 360.0);
+          vec3 baseColor = hsv2rgb(vec3(animatedHue / 360.0, 0.6, 0.9));
 
-    // Animate hue slightly for richness
-    float animatedHue = mod(uHue + sin(iTime * 0.5) * 20.0, 360.0);
-    vec3 baseColor = hsv2rgb(vec3(animatedHue / 360.0, 0.6, 0.9));
-
-    // Soft glow effect using smoother falloff
-    float glow = pow(0.04 / (dist + 0.01), 1.4); // was 1.0
-    vec3 col = baseColor * glow * uIntensity;
-
-    // Slight gamma correction
-    col = pow(col, vec3(0.9));
-    fragColor = vec4(col, 1.0);
-}
+          float glow = pow(0.04 / (dist + 0.01), 1.4);
+          vec3 col = baseColor * glow * uIntensity;
+          col = pow(col, vec3(0.9));
+          fragColor = vec4(col, 1.0);
+      }
 
       void main() {
           vec4 color;
@@ -119,6 +113,7 @@ const Lightning = ({
           gl_FragColor = color;
       }
     `;
+
 
     const compileShader = (source, type) => {
       const shader = gl.createShader(type);
@@ -144,9 +139,15 @@ const Lightning = ({
       console.error("Program link error:", gl.getProgramInfoLog(program));
       return;
     }
-    gl.useProgram(program);
 
-    const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]);
+    gl.useProgram(program); // Activate program BEFORE fetching uniforms
+
+
+    const vertices = new Float32Array([
+      -1, -1, 1, -1, -1, 1,
+      -1, 1, 1, -1, 1, 1,
+    ]);
+
     const buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
@@ -154,6 +155,7 @@ const Lightning = ({
     const aPos = gl.getAttribLocation(program, "aPosition");
     gl.enableVertexAttribArray(aPos);
     gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
 
     const resLoc = gl.getUniformLocation(program, "iResolution");
     const timeLoc = gl.getUniformLocation(program, "iTime");
@@ -164,9 +166,8 @@ const Lightning = ({
     const sizeLoc = gl.getUniformLocation(program, "uSize");
 
     const start = performance.now();
-
     let lastTime = 0;
-    const fpsCap = 45; // 30 FPS cap
+    const fpsCap = 45;
     const frameInterval = 1000 / fpsCap;
 
     const render = () => {
@@ -180,6 +181,7 @@ const Lightning = ({
 
       resizeCanvas();
       gl.viewport(0, 0, canvas.width, canvas.height);
+
       gl.uniform2f(resLoc, canvas.width, canvas.height);
       gl.uniform1f(timeLoc, (now - start) / 1000);
       gl.uniform1f(hueLoc, hue);

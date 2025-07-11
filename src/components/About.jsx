@@ -34,24 +34,24 @@ const About = () => {
 
     const tlTwo = gsap.timeline();
     tlTwo
-      .to(".overlay", {
-        opacity: 0,
-        duration: 5,
-        delay: 2,
-        ease: "power1.inOut",
-      })
-      .to(".overlay", {
-        opacity: 1,
-        duration: 1,
-        delay: 5,
-        ease: "power1.inOut",
-      })
-      .to(".overlay", {
-        opacity: 0,
-        duration: 5,
-        delay: 2,
-        ease: "power1.inOut",
-      });
+      // .to(".overlay", {
+      //   opacity: 0,
+      //   duration: 5,
+      //   delay: 2,
+      //   ease: "power1.inOut",
+      // })
+      // .to(".overlay", {
+      //   opacity: 1,
+      //   duration: 1,
+      //   delay: 5,
+      //   ease: "power1.inOut",
+      // })
+      // .to(".overlay", {
+      //   opacity: 0,
+      //   duration: 5,
+      //   delay: 2,
+      //   ease: "power1.inOut",
+      // });
   }, []);
 
   const hoizontalHandler = () => {
